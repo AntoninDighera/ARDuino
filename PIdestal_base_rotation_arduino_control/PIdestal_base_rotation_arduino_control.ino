@@ -5,12 +5,6 @@ This is the code for the pidestal, it uses the adafruit motorshield v2.3. I am c
 const int sens = 7;
 const int red = 11;  //assign red normally open button to pin 12
 const int blue = 12; //assign blue normally open button to pin 11
-int valr=0;
-int valb=0;
-int vals=0;
-int trg=0;
-int brun=1;
-int rrun=1;
 char * red_button = "red";
 char * blue_button = "blu";
 char * last_button;
@@ -35,33 +29,22 @@ void setup() {
 const int MOTOR_SPEED = 50; //int value used to define motor speed, small impulses are aroun 5/10, maMOTOR_SPEED speed is 225 *personal note, 100 is eMOTOR_SPEEDtremely fast. 
 
 void loop() {
-  valr=digitalRead(red);
-  valb=digitalRead(blue);
-  vals=digitalRead(sens);
   if(digitalRead(red) == LOW && digitalRead(sens)!=0){ // On red button press and if light sensor is blocked
     last_button = red_button;
-    brun=1;
-    trg=0;
     myMotor->run(FORWARD); //runs your motor "forward", make sure you test what forward is so you dont destoy anything eMOTOR_SPEEDpensive
     myMotor->setSpeed(MOTOR_SPEED);  //sets motor speed to constant integer value defined outside of loop 
   }
   else if(digitalRead(blue)== LOW && digitalRead(sens)!=0){ // On Blue button press and if light sensor is blocked
     last_button = blue_button;
-    rrun=1;
-    trg=0;
     myMotor->run(BACKWARD); //run the motor backwards 
     myMotor->setSpeed(MOTOR_SPEED);   //sets motor speed to constant integer value defined outside of loop
   }
   else if(digitalRead(sens)==0){
     if (last_button == red_button){
-      rrun=1;
-      trg=0;
       myMotor->run(BACKWARD); //run the motor backwards 
       myMotor->setSpeed(MOTOR_SPEED);   //sets motor speed to constant integer value defined outside of loop
     }
     else if (last_button == blue_button) {
-      brun=1;
-      trg=0;
       myMotor->run(FORWARD); //runs your motor "forward"
       myMotor->setSpeed(MOTOR_SPEED);  //sets motor speed to constant integer value defined outside of loop 
     }
@@ -70,8 +53,6 @@ void loop() {
     myMotor->setSpeed(0);
   }    
   delay(10); //wait 10 miliseconds to restart this loop
-  //Serial.println(valr);
-  Serial.println(vals); 
 }
  
 
