@@ -6,6 +6,18 @@ Software to control the base plate of the camera using Arduino Uno
 
 ## Schematics
 
+This is the current setup
+
+![setup photo](static_resources/TechHive_pidestal.jpg)
+
+This is the IR sensor
+
+![opto endstop](static_resources/TechHive_pidestal_opto_endstop.jpg)
+
+This is how it should work
+
+![pidestal rotation with stopping demo](static_resources/pidestal_demo.gif)
+
 ## Branches
 
 ## Dependencies
@@ -19,8 +31,13 @@ Software to control the base plate of the camera using Arduino Uno
 
 ### Software
 
-- Adafruit_MotorShield.h
-- IDE used - Arduino 1.8.2
+#### Libraries
+
+- [Adafruit_MotorShield.h](https://github.com/adafruit/Adafruit_Motor_Shield_V2_Library/blob/master/Adafruit_MotorShield.h)
+
+#### Recommended IDE
+
+- Arduino 1.8.2
 
 ## Setup
 
