@@ -15,7 +15,7 @@ char * red_button = "red";
 char * blue_button = "blu";
 char * last_button;
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();   // Create the motor shield object with the default I2C address
-Adafruit_DCMotor *myMotor = AFMS.getMotor(4);         //Sets a motor at motor port 1
+Adafruit_DCMotor *myMotor = AFMS.getMotor(4);         //Sets a motor at motor port 4
 
 void setup() {
   Serial.begin(9600);  // set up Serial library at 9600 bps
@@ -68,13 +68,10 @@ void loop() {
     }
   }
   else {
-    //myMotor->setSpeed(0);
     myMotor->run(RELEASE);
   }    
   delay(10); //wait 10 miliseconds to restart this loop
-  //Serial.println(valr);
-  Serial.println(*last_button);
-  Serial.println(vals); 
+
 }
  
 
