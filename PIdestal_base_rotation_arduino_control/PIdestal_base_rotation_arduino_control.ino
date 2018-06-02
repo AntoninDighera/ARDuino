@@ -9,7 +9,7 @@ char * red_button = "red";
 char * blue_button = "blu";
 char * last_button;
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();   // Create the motor shield object with the default I2C address
-Adafruit_DCMotor *myMotor = AFMS.getMotor(1);         //Sets a motor at motor port 1
+Adafruit_DCMotor *myMotor = AFMS.getMotor(4);         //Sets a motor at motor port 4
 
 void setup() {
   Serial.begin(9600);  // set up Serial library at 9600 bps
@@ -26,7 +26,7 @@ void setup() {
  
 }
 
-const int MOTOR_SPEED = 50; //int value used to define motor speed, small impulses are aroun 5/10, maMOTOR_SPEED speed is 225 *personal note, 100 is eMOTOR_SPEEDtremely fast. 
+const int MOTOR_SPEED = 15; //int value used to define motor speed, small impulses are aroun 5/10, maMOTOR_SPEED speed is 225 *personal note, 100 is eMOTOR_SPEEDtremely fast. 
 
 void loop() {
   if(digitalRead(red) == LOW && digitalRead(sens)!=0){ // On red button press and if light sensor is blocked
@@ -50,7 +50,7 @@ void loop() {
     }
   }
   else {
-    myMotor->setSpeed(0);
+    myMotor->run(RELEASE);
   }    
   delay(10); //wait 10 miliseconds to restart this loop
 }
